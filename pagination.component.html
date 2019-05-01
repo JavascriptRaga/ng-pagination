@@ -1,0 +1,14 @@
+<ul class="page-numbers">
+  <li *ngFor="let pageNumber of pages">
+    <a href="javascript:void(0)" (click)="showPage(pageNumber, $event)" [ngClass]="{'active': pageNumber == currentPage}">{{pageNumber}}</a>
+  </li>
+  <li *ngIf="goToPageBox"> | Go to page:
+    <input type="text" class="gotoPageInput" #gotoPageInput (keyup)="gotoPage($event, gotoPageInput.value)" />
+  </li>
+  <li *ngIf="perPageDropDown"> | Show per page:
+    <select class="perPageDropDown" #perPageDropDown (change)="showPerPage(perPageDropDown.value)">
+      <option value=""></option>
+      <option *ngFor="let page of perPageOption" [value]="page">{{page}}</option>
+    </select>
+  </li>
+</ul>
